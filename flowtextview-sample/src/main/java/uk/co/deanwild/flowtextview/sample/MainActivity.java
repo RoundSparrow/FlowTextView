@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import uk.co.deanwild.flowtextview.FlowTextView;
+import uk.co.deanwild.flowtextview.FlowTextViewTwo;
 import uk.co.deanwild.flowtextview.listeners.OnLinkClickListener;
 
 
@@ -17,13 +18,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private static final float defaultFontSize = 20.0f;
 
-    private FlowTextView flowTextView;
+    private FlowTextViewTwo flowTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        flowTextView = (FlowTextView) findViewById(R.id. ftv);
+        setContentView(R.layout.activity_flowtextview_two);
+        flowTextView = (FlowTextViewTwo) findViewById(R.id. ftv);
         String content = getString(R.string.lorem);
         Spanned html = Html.fromHtml(content);
         flowTextView.setText(html);
