@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.1"
 
     defaultConfig {
-        applicationId "uk.co.deanwild.flowtext"
+        // applicationId "uk.co.deanwild.flowtext"
         minSdkVersion 14
         targetSdkVersion 21
         versionCode 202
