@@ -259,7 +259,7 @@ public class FlowTextViewTwo extends RelativeLayout {
                 obstacle.topLefty = child.getTop() - layoutParams.topMargin;
                 obstacle.bottomRightx = obstacle.topLeftx + layoutParams.leftMargin + child.getWidth() + layoutParams.rightMargin;   // padding should probably be included as well
                 obstacle.bottomRighty = obstacle.topLefty + +layoutParams.topMargin + child.getHeight() + layoutParams.bottomMargin; // padding should probably be included as well
-                android.util.Log.d("FTV2", "Obstacle " + obstacle.toString());
+                android.util.Log.d("FTV2", "Create Obstacle " + obstacle.toString() + " !! CT " + child.getTop() + " CTM " + layoutParams.topMargin);
                 obstacles.add(obstacle);
                 if (obstacle.bottomRighty > lowestYCoord) lowestYCoord = obstacle.bottomRighty;
             }
