@@ -25,12 +25,14 @@ public class CollisionHelper {
 
         float lineYtop = lineYbottom - lineHeight;
         mAreas.clear();
+        int missObstacleCount = 0;
 
         for (Obstacle obstacle : obstacles) {
 
-            if(obstacle.topLefty > lineYbottom || obstacle.bottomRighty < lineYtop){
-
-            }else{
+            if (obstacle.topLefty > lineYbottom || obstacle.bottomRighty < lineYtop) {
+                // do nothing?
+                android.util.Log.v("CH", "missObstacle? " + missObstacleCount++ + " obstacle.topLefty: " + obstacle.topLefty + " obstacle.bottomRighty " + obstacle.bottomRighty);
+            } else {
 
                 Area leftArea = new Area();
                 leftArea.x1 = 0;

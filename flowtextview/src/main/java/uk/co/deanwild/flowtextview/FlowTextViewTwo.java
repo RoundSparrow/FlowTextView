@@ -259,6 +259,7 @@ public class FlowTextViewTwo extends RelativeLayout {
                 obstacle.topLefty = child.getTop() - layoutParams.topMargin;
                 obstacle.bottomRightx = obstacle.topLeftx + layoutParams.leftMargin + child.getWidth() + layoutParams.rightMargin;   // padding should probably be included as well
                 obstacle.bottomRighty = obstacle.topLefty + +layoutParams.topMargin + child.getHeight() + layoutParams.bottomMargin; // padding should probably be included as well
+                android.util.Log.d("FTV2", "Obstacle " + obstacle.toString());
                 obstacles.add(obstacle);
                 if (obstacle.bottomRighty > lowestYCoord) lowestYCoord = obstacle.bottomRighty;
             }
@@ -266,6 +267,7 @@ public class FlowTextViewTwo extends RelativeLayout {
 
         return lowestYCoord;
     }
+
 
     private int getChunk(String text, float maxWidth) {
         int length = mTextPaint.breakText(text, true, maxWidth, null);

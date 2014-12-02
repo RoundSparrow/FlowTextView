@@ -8,4 +8,10 @@ public class Obstacle {
     public int topLefty;
     public int bottomRightx;
     public int bottomRighty;
+
+    @Override
+    public String toString()
+    {
+        return "TLx " + topLeftx + " TLy " + topLefty + " BRx " + bottomRightx + " BRy " + bottomRighty;
+    }
 }
