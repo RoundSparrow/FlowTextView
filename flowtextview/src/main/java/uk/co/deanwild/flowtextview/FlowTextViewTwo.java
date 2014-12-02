@@ -246,6 +246,12 @@ public class FlowTextViewTwo extends RelativeLayout {
         }
     }
 
+
+    public boolean useTopMarginWorkaround = true;
+
+    /*
+    Additions / tweaking author: Stephen A. Gutknecht
+     */
     private int findBoxesAndReturnLowestObstacleYCoord() {
         int lowestYCoord = 0;
         int childCount = this.getChildCount();
@@ -256,10 +262,19 @@ public class FlowTextViewTwo extends RelativeLayout {
                 layoutParams = (LayoutParams) child.getLayoutParams();
                 Obstacle obstacle = new Obstacle();
                 obstacle.topLeftx = child.getLeft() - layoutParams.leftMargin;
-                obstacle.topLefty = child.getTop() - layoutParams.topMargin;
-                obstacle.bottomRightx = obstacle.topLeftx + layoutParams.leftMargin + child.getWidth() + layoutParams.rightMargin;   // padding should probably be included as well
-                obstacle.bottomRighty = obstacle.topLefty + +layoutParams.topMargin + child.getHeight() + layoutParams.bottomMargin; // padding should probably be included as well
-                android.util.Log.d("FTV2", "Create Obstacle " + obstacle.toString() + " !! CT " + child.getTop() + " CTM " + layoutParams.topMargin);
+
+                if (useTopMarginWorkaround)
+                    obstacle.topLefty = child.getTop();
+                else
+                    obstacle.topLefty = child.getTop() - layoutParams.topMargin;
+
+                obstacle.bottomRightx = obstacle.topLeftx + layoutParams.leftMargin + child.getWidth() + layoutParams.rightMargin;       // padding should probably be included as well
+                if (useTopMarginWorkaround)
+                    obstacle.bottomRighty = child.getBottom();  // padding should probably be included as well
+                else
+                    obstacle.bottomRighty = obstacle.topLefty + layoutParams.topMargin + child.getHeight() + layoutParams.bottomMargin;  // padding should probably be included as well
+
+                android.util.Log.d("FTV2", "Create Obstacle " + i + "/" + (childCount - 1) + " " + obstacle.toString() + " !! CT " + child.getTop() + " CTM " + layoutParams.topMargin);
                 obstacles.add(obstacle);
                 if (obstacle.bottomRighty > lowestYCoord) lowestYCoord = obstacle.bottomRighty;
             }

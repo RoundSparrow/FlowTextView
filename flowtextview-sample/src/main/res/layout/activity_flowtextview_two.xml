@@ -41,7 +41,7 @@
                 android:layout_height="120dp"
                 android:layout_below="@id/rightImage0"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="100dip"
+                android:layout_marginTop="140dip"
                 android:padding="10dip"
                 android:src="@drawable/android2"
                 />
