@@ -106,10 +106,20 @@ public class FlowTextView extends RelativeLayout {
         ta.recycle();
     }
 
+    public int onDrawCount = 0;
+
+
     // INTERESTING DRAWING STUFF
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        onDrawCount++;
+
+        // Debug accidental looping that can pretty easily happen with the wrong triggers
+        // Observation: on a press of button "Font size +" - this is being called 3 times
+        android.util.Log.v("FTV", "FlowTextView onDraw: " + onDrawCount);
+
         float mViewWidth = this.getWidth();
         obstacles.clear(); // clear old data, boxes stores an array of "obstacles" that we need to paint the text around
         int lowestYCoord = findBoxesAndReturnLowestObstacleYCoord(); // find the "obstacles" within the view and get the lowest obstacle coordinate at the same time
@@ -143,7 +153,7 @@ public class FlowTextView extends RelativeLayout {
                 charOffsetStart = charOffsetEnd;
             } else { // is some actual text
 
-                while (thisBlock.length() > 0) { // churn through the block spitting it out onto seperate lines until there is nothing left to render
+                while (thisBlock.length() > 0) { // churn through the block spitting it out onto separate lines until there is nothing left to render
                     lineIndex++; // we need a new line
                     yOffset = getPaddingTop() + lineIndex * lineHeight - (getLineHeight() + mTextPaint.getFontMetrics().ascent); // calculate our new y position based on number of lines * line height
                     Line thisLine = CollisionHelper.calculateLineSpaceForGivenYOffset(yOffset, lineHeight, mViewWidth, obstacles); // calculate a theoretical "line" space that we have to paint into based on the "obstacles" that exist at this yOffset and this line height - collision detection essentially
@@ -247,7 +257,7 @@ public class FlowTextView extends RelativeLayout {
                 Obstacle obstacle = new Obstacle();
                 obstacle.topLeftx = child.getLeft() - layoutParams.leftMargin;
                 obstacle.topLefty = child.getTop() - layoutParams.topMargin;
-                obstacle.bottomRightx = obstacle.topLeftx + layoutParams.leftMargin + child.getWidth() + layoutParams.rightMargin; // padding should probably be included as well
+                obstacle.bottomRightx = obstacle.topLeftx + layoutParams.leftMargin + child.getWidth() + layoutParams.rightMargin;   // padding should probably be included as well
                 obstacle.bottomRighty = obstacle.topLefty + +layoutParams.topMargin + child.getHeight() + layoutParams.bottomMargin; // padding should probably be included as well
                 obstacles.add(obstacle);
                 if (obstacle.bottomRighty > lowestYCoord) lowestYCoord = obstacle.bottomRighty;
@@ -424,5 +434,4 @@ public class FlowTextView extends RelativeLayout {
         this.pageHeight = pageHeight;
         invalidate();
     }
-
 }
