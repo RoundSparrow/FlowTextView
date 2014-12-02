@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         // applicationId "uk.co.deanwild.flowtext"
-        minSdkVersion 14
+        minSdkVersion 8
         targetSdkVersion 21
         versionCode 202
         versionName "2.0.2"
