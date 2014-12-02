@@ -9,7 +9,6 @@ import android.text.Spanned;
 import android.view.View;
 import android.widget.Button;
 
-import uk.co.deanwild.flowtextview.FlowTextView;
 import uk.co.deanwild.flowtextview.FlowTextViewTwo;
 import uk.co.deanwild.flowtextview.listeners.OnLinkClickListener;
 

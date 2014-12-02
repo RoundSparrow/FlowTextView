@@ -16,11 +16,9 @@ import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
-import uk.co.deanwild.flowtextview.helpers.ClickHandler;
 import uk.co.deanwild.flowtextview.helpers.ClickHandlerTwo;
 import uk.co.deanwild.flowtextview.helpers.CollisionHelper;
 import uk.co.deanwild.flowtextview.helpers.PaintHelper;
-import uk.co.deanwild.flowtextview.helpers.SpanParser;
 import uk.co.deanwild.flowtextview.helpers.SpanParserTwo;
 import uk.co.deanwild.flowtextview.listeners.OnLinkClickListener;
 import uk.co.deanwild.flowtextview.models.HtmlLink;
